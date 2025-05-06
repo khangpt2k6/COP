@@ -1,96 +1,96 @@
-# 📌 Summary Python: General Loop, Nested Loop, Loop with else, Random Functions, Enumerate, Same Name Functions
+# 📌 Tóm tắt Python: Vòng lặp cơ bản, Vòng lặp lồng nhau, Vòng lặp với else, Hàm random, Hàm enumerate, Hàm trùng tên
 
-## 🔁 General Loops
+## 🔁 Các vòng lặp cơ bản
 
-### 1. Basic loops (`for` / `while`)
+### 1. Vòng lặp cơ bản (`for` / `while`)
 
-- **for loop:**
+- **Vòng lặp for:**
 ```python
 for i in range(5):
     print(i)
-# Output: 0 1 2 3 4
+# Kết quả: 0 1 2 3 4
 ```
 
-- **while loop:**
+- **Vòng lặp while:**
 ```python
 i = 0
 while i < 5:
     print(i)
     i += 1
-# Output: 0 1 2 3 4
+# Kết quả: 0 1 2 3 4
 ```
 
-### 2. General loop idea
-- Repeat a block of code multiple times.
-- Stops when condition fails (`while`) or range ends (`for`).
+### 2. Ý tưởng chung
+- Lặp lại một khối lệnh nhiều lần.
+- Dừng khi điều kiện sai (`while`) hoặc kết thúc dải số (`for`).
 
-### 3. Nested loop
-- Loop inside another loop:
+### 3. Vòng lặp lồng nhau
+- Vòng lặp bên trong một vòng lặp khác:
 ```python
 for i in range(3):
     for j in range(2):
         print(f"i={i}, j={j}")
 ```
 
-### 4. Loop with `else`
-- `else` executes ONLY if the loop completes without a `break`:
+### 4. Vòng lặp với `else`
+- `else` chỉ chạy nếu vòng lặp hoàn tất mà không gặp `break`:
 
 ```python
 for i in range(5):
     if i == 3:
         break
 else:
-    print("Finished loop")  # won't print due to break
+    print("Vòng lặp đã hoàn thành")  # không in do gặp break
 ```
 
 ```python
 for i in range(5):
     print(i)
 else:
-    print("Loop finished without break")  # will print
+    print("Vòng lặp kết thúc bình thường")  # sẽ được in
 ```
 
-## 🎲 Random Functions and Their Ranges
+## 🎲 Hàm random và phạm vi giá trị
 
 ```python
 import random
 
-random.randint(1, 5)     # Integer from 1 to 5 inclusive
-random.randrange(1, 5)   # Integer from 1 to 4
-random.random()          # Float from 0.0 to 1.0
-random.uniform(1, 5)     # Float from 1 to 5 inclusive
+random.randint(1, 5)     # Số nguyên từ 1 đến 5 (bao gồm 5)
+random.randrange(1, 5)   # Số nguyên từ 1 đến 4
+random.random()          # Số thực từ 0.0 đến 1.0
+random.uniform(1, 5)     # Số thực từ 1 đến 5 (bao gồm cả 5)
 ```
 
-| Function       | Data Type | Range    | Example     |
-|----------------|-----------|----------|-------------|
-| randint(a, b)  | int       | [a, b]   | 1, 2, 3, 4, 5 |
-| randrange(a, b)| int       | [a, b)   | 1, 2, 3, 4   |
-| random()       | float     | [0.0, 1.0)| 0.2374      |
-| uniform(a, b)  | float     | [a, b]   | 2.6345       |
+| Hàm           | Kiểu dữ liệu | Phạm vi   | Ví dụ kết quả |
+|---------------|--------------|-----------|---------------|
+| randint(a, b) | int          | [a, b]    | 1, 2, 3, 4, 5 |
+| randrange(a,b)| int          | [a, b)    | 1, 2, 3, 4    |
+| random()      | float        | [0.0,1.0) | 0.2374        |
+| uniform(a,b)  | float        | [a, b]    | 2.6345        |
 
-## ⛔ `break` vs `continue`
+## ⛔ `break` và `continue`
 
-- **break:** Exit current loop immediately.
+- **break:** Thoát khỏi vòng lặp ngay lập tức.
 
 ```python
 for i in range(5):
     if i == 3:
         break
     print(i)
-# Output: 0 1 2
+# Kết quả: 0 1 2
 ```
 
-- **continue:** Skip remaining code and continue next iteration.
+- **continue:** Bỏ qua phần còn lại của vòng lặp, tiếp tục vòng mới.
 
 ```python
 for i in range(5):
     if i == 3:
         continue
     print(i)
-# Output: 0 1 2 4
+# Kết quả: 0 1 2 4
 ```
 
-### In Nested Loops:
+### Trong vòng lặp lồng nhau:
 
 ```python
 for i in range(3):
@@ -98,26 +98,26 @@ for i in range(3):
         if j == 1:
             break
         print(f"i={i}, j={j}")
-# break exits only inner loop
+# break chỉ thoát khỏi vòng trong (for j)
 ```
 
-## 🧮 `enumerate()`
+## 🧮 Hàm `enumerate()`
 
-- Provides both index and value:
+- Cho cả chỉ số và giá trị khi duyệt:
 
 ```python
 fruits = ["apple", "banana", "cherry"]
 for index, value in enumerate(fruits):
     print(index, value)
-# Output:
+# Kết quả:
 # 0 apple
 # 1 banana
 # 2 cherry
 ```
 
-## 🎯 Multiple Functions with Same Name
+## 🎯 Hàm trùng tên
 
-- Python does **NOT** support function overloading. New definitions overwrite previous ones.
+- Python **KHÔNG** hỗ trợ đa hình (overloading). Hàm khai báo sau sẽ ghi đè hàm trước.
 
 ```python
 def greet():
@@ -127,7 +127,7 @@ def greet():
     print("Xin chào")
 
 greet()
-# Output: Xin chào
+# Kết quả: Xin chào
 ```
 
-- Used for rewriting/improving functions. Only one definition is active at a time.
+- Thường dùng khi viết lại hàm để cải tiến. Chỉ hàm sau cùng có hiệu lực.
