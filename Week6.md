@@ -1,33 +1,33 @@
-**COP2510 - Week 6 Python Summary: Loops, Random, Control Statements, Enumerate, Function Overwrite**
+# **Tóm tắt kiến thức Python Tuần 6 - COP2510**
 
 ---
 
-### I. General & Basic Loops
+## I. Vòng lặp cơ bản và tổng quát
 
-#### 1. `for` Loop:
+### 1. Vòng lặp `for`
 
-* Syntax:
+* Cú pháp:
 
   ```python
-  for variable in iterable:
-      # code block
+  for biến in dãy:
+      # khối lệnh
   ```
-* Example:
+* Ví dụ:
 
   ```python
   for i in range(5):
-      print(i)  # Output: 0 1 2 3 4
+      print(i)  # Kết quả: 0 1 2 3 4
   ```
 
-#### 2. `while` Loop:
+### 2. Vòng lặp `while`
 
-* Syntax:
+* Cú pháp:
 
   ```python
-  while condition:
-      # code block
+  while điều_kiện:
+      # khối lệnh
   ```
-* Example:
+* Ví dụ:
 
   ```python
   i = 0
@@ -36,9 +36,7 @@
       i += 1
   ```
 
-### II. Nested Loops
-
-#### - Loops inside another loop:
+## II. Vòng lặp lồng nhau (nested loop)
 
 ```python
 for i in range(2):
@@ -48,118 +46,127 @@ for i in range(2):
 
 ---
 
-### III. Loop with `else`
+## III. Vòng lặp với `else`
 
-* The `else` clause runs **only if the loop doesn't encounter a `break`**.
+* Phần `else` sẽ **chỉ chạy nếu vòng lặp không bị `break`**.
 
-Example 1 (without `break`):
+Ví dụ 1 (không có `break`):
 
 ```python
 for i in range(3):
     print(i)
 else:
-    print("Loop finished")  # This will run
+    print("Kết thúc vòng lặp")  # Sẽ chạy
 ```
 
-Example 2 (with `break`):
+Ví dụ 2 (có `break`):
 
 ```python
 for i in range(5):
     if i == 3:
         break
 else:
-    print("Loop finished")  # This will NOT run
+    print("Kết thúc vòng lặp")  # Không chạy
 ```
 
 ---
 
-### IV. Random Function Ranges (via `random` module)
+## IV. Hàm random và phạm vi giá trị
 
 ```python
 import random
 
-random.randint(a, b)    # Returns integer in [a, b]
-random.randrange(a, b)  # Returns integer in [a, b)
-random.random()         # Returns float in [0.0, 1.0)
-random.uniform(a, b)    # Returns float in [a, b]
+random.randint(a, b)    # Số nguyên trong khoảng [a, b]
+random.randrange(a, b)  # Số nguyên trong khoảng [a, b)
+random.random()         # Số thực trong khoảng [0.0, 1.0)
+random.uniform(a, b)    # Số thực trong khoảng [a, b]
 ```
 
-| Function          | Output Type | Range       | Includes End? |
-| ----------------- | ----------- | ----------- | ------------- |
-| `randint(1, 5)`   | int         | 1 to 5      | Yes           |
-| `randrange(1, 5)` | int         | 1 to 4      | No            |
-| `random()`        | float       | 0.0 to <1.0 | No            |
-| `uniform(1, 5)`   | float       | 1.0 to 5.0  | Yes           |
+| Hàm               | Kiểu trả về | Khoảng giá trị | Có bao gồm giá trị cuối? |
+| ----------------- | ----------- | -------------- | ------------------------ |
+| `randint(1, 5)`   | int         | 1 đến 5        | Có                       |
+| `randrange(1, 5)` | int         | 1 đến 4        | Không                    |
+| `random()`        | float       | 0.0 đến <1.0   | Không                    |
+| `uniform(1, 5)`   | float       | 1.0 đến 5.0    | Có                       |
 
 ---
 
-### V. `break` and `continue` Statements
+## V. Câu lệnh `break` và `continue`
 
-#### `break`:
+### `break`: thoát khỏi vòng lặp
 
-* Immediately exits the loop (inner-most loop if nested).
+### `continue`: bỏ qua lần lặp hiện tại
 
-#### `continue`:
-
-* Skips the remaining code in the current iteration.
-
-Example:
+Ví dụ:
 
 ```python
 for i in range(5):
     if i == 2:
-        continue  # Skips printing 2
+        continue  # Bỏ qua in 2
     if i == 4:
-        break     # Exits before printing 4
-    print(i)      # Output: 0, 1, 3
+        break     # Thoát vòng lặp khi i = 4
+    print(i)      # Kết quả: 0, 1, 3
 ```
 
 ---
 
-### VI. Using `enumerate()`
+## VI. Hàm `enumerate()`
 
-* Returns index and value when looping through an iterable.
+* Dùng để lấy **chỉ số và giá trị** trong vòng lặp:
 
 ```python
-fruits = ['apple', 'banana', 'cherry']
+fruits = ['tao', 'chuoi', 'xoai']
 for index, fruit in enumerate(fruits):
     print(index, fruit)
-# Output:
-# 0 apple
-# 1 banana
-# 2 cherry
+# Kết quả:
+# 0 tao
+# 1 chuoi
+# 2 xoai
 ```
 
 ---
 
-### VII. Function Overwriting
+## VII. Hàm bị ghi đè (overwritten functions)
 
-* Defining multiple functions with the same name in a scope means the **latest one overwrites the previous ones**.
+* Khi định nghĩa 2 hàm cùng tên, hàm sau **sẽ thay thế hàm trước**.
 
 ```python
-def greet():
+def xin_chao():
     print("Hello")
 
-def greet():
-    print("Xin chao")
+def xin_chao():
+    print("Xin chào")
 
-greet()  # Output: Xin chao
+xin_chao()  # Kết quả: Xin chào
 ```
 
-* Python does NOT support traditional function overloading like Java/C++.
+⚠️ Python **không hỗ trợ** overload nhiều hàm giống như C++/Java.
 
 ---
 
-### VIII. Common Quiz Concepts
+## VIII. Tổng kết nhanh
 
-* `loop + else` only executes when **no break** occurs.
-* `break` exits the loop entirely.
-* `continue` skips only one iteration.
-* `enumerate()` helps track indexes.
-* `random` functions differ in range inclusivity.
-* Last function with a duplicate name overwrites the previous.
+* `else` trong vòng lặp chỉ chạy khi **không có `break`**
+* `break` thoát vòng lặp ngay lập tức
+* `continue` bỏ qua vòng lặp hiện tại
+* `enumerate()` giúp có chỉ số trong vòng `for`
+* Hàm `random` có sự khác biệt rõ ràng về phạm vi và kiểu dữ liệu
+* Định nghĩa lại hàm cùng tên sẽ ghi đè hàm cũ
 
 ---
 
-**Practice Suggestion:**
-Try writing loops with both `break` and `else`, test each `random` function, and play with overwriting function definitions.
+## Bài tập gợi ý
+
+1. In ra các số từ 1 đến 10, bỏ qua số chia hết cho 3.
+2. Viết vòng `while` đoán số ngẫu nhiên cho đến khi đúng.
+3. Dùng `for-else` để kiểm tra xem có số nào chia hết cho 7 trong list hay không.
+4. Viết 2 hàm cùng tên, xem hàm nào được gọi.
+
+---
+
+**Gợi ý ôn tập:**
+
+* Thử viết các đoạn code có dùng cả `break`, `continue`, `else`
+* In thử kết quả các hàm `random`
+* Dùng `enumerate()` trong lặp để hiểu cách hoạt động
+* Viết lại các hàm để thấy ghi đè diễn ra
